@@ -1,44 +1,23 @@
 <template>
   <div class="page">
-    <div class="weui-loadmore">
-      <div class="weui-loading"></div>
-      <div class="weui-loadmore__tips">正在加载</div>
-    </div>
-    <div class="weui-loadmore weui-loadmore_line">
-      <div class="weui-loadmore__tips weui-loadmore__tips_in-line">暂无数据</div>
-    </div>
-    <div class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
-      <div class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot"></div>
-    </div>
   </div>
 </template>
 
 <script>
-import base64 from '../../../static/images/base64';
 export default {
   data() {
     return {
-      iconSize: [20, 30, 40, 50, 60, 70],
-      iconColor: [
-        'red', 'orange', 'yellow', 'green', 'rgb(0,255,255)', 'blue', 'purple'
-      ],
-      iconType: [
-        'success', 'success_no_circle', 'info', 'warn', 'waiting', 'cancel', 'download', 'search', 'clear'
-      ]
     }
   },
-  mounted() {
-    this.icon = base64.icon20;
+  computed: {
+
   },
   methods: {
 
   }
-
 }
 </script>
 
-<style>
-.group {
-  margin-top: 50px;
-}
+<style scoped>
+
 </style>

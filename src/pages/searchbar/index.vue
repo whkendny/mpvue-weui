@@ -9,7 +9,7 @@
         <div class="weui-search-bar__form">
           <div class="weui-search-bar__box">
             <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-            <input type="text" class="weui-search-bar__input" placeholder="搜索" v-model="inputVal" focus="inputShowed" @input="inputTyping" />
+            <input type="text" class="weui-search-bar__input" placeholder="搜索" v-model="inputVal" :focus="inputShowed" @input="inputTyping" />
             <div class="weui-icon-clear" v-if="inputVal.length > 0" @click="clearInput">
               <icon type="clear" size="14"></icon>
             </div>
@@ -52,7 +52,7 @@ export default {
   data() {
     return {
       inputShowed: false,
-      inputVal: ""
+      inputVal: ''
     }
   },
   methods: {
@@ -61,14 +61,15 @@ export default {
     },
     hideInput() {
       this.inputVal = '';
-      this.inputShowed = false
+      this.inputShowed = false;
     },
     clearInput() {
       this.inputVal = '';
     },
     inputTyping(e) {
       console.log(e);
-      this.inputVal = e.mp.detail.value
+      this.inputVal = e.mp.detail.value;
+      console.log('输入信息为：'+e.mp.detail.value);
     }
   }
 }

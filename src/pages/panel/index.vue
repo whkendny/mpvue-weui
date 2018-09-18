@@ -5,6 +5,7 @@
       <div class="page__desc">面板</div>
     </div>
     <div class="page__bd">
+      <!-- 图文组合列表  start -->
       <div class="weui-panel weui-panel_access">
         <div class="weui-panel__hd">图文组合列表</div>
         <div class="weui-panel__bd">
@@ -34,6 +35,10 @@
           </div>
         </div>
       </div>
+
+      <!-- 图文组合列表  end -->
+
+      <!-- 文字组合列表  start -->
       <div class="weui-panel weui-panel_access">
         <div class="weui-panel__hd">文字组合列表</div>
         <div class="weui-panel__bd">
@@ -53,6 +58,9 @@
           </div>
         </div>
       </div>
+      <!-- 文字组合列表  end -->
+
+      <!-- 小图文组合列表  start -->
       <div class="weui-panel">
         <div class="weui-panel__hd">小图文组合列表</div>
         <div class="weui-panel__bd">
@@ -80,6 +88,9 @@
           </div>
         </div>
       </div>
+      <!-- 小图文组合列表 end -->
+
+      <!-- 文字列表附来源 start -->
       <div class="weui-panel">
         <div class="weui-panel__hd">文字列表附来源</div>
         <div class="weui-panel__bd">
@@ -94,6 +105,7 @@
           </div>
         </div>
       </div>
+      <!-- 文字列表附来源 end -->
     </div>
   </div>
 </template>

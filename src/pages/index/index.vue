@@ -8,9 +8,9 @@
       <div class="kind-list">
         <div v-for="(item, index) in list" :key="index">
           <div class="kind-list__item">
-            <div :id=item.id :class="{'kind-list__item-hd_show':item.open}" class="weui-flex,kind-list__item-hd" @click="kindToggle">
-              <div class="weui-flex__item">{{item.name}}</div>
-              <image class="kind-list__img" :src=" '/../static/images/icon_nav_'+item.id+'.png'"></image>
+            <div :id=item1.id :class="{'kind-list__item-hd_show':item1.open}" class="weui-flex,kind-list__item-hd" @click="kindToggle">
+              <div class="weui-flex__item">{{item1.name}}</div>
+              <img class="kind-list__img" :src=" '/static/images/icon_nav_'+item1.id+'.png'">
             </div>
             <div :class="{'kind-list__item-bd_show':item.open}" class="kind-list__item-bd">
               <div :class="{'weui-cells_show':item.open}" class="weui-cells">
@@ -30,7 +30,6 @@
 </template>
 
 <script>
-
 export default {
   data() {
     return {
@@ -45,7 +44,20 @@ export default {
           id: 'widget',
           name: '基础组件',
           open: false,
-          pages: ['article', 'badge', 'flex', 'footer', 'gallery', 'grid', 'icons', 'loadmore', 'panel', 'preview', 'progress']
+          pages: [
+            'article',
+            'badge',
+            'flex',
+            'footer',
+            'gallery',
+            'grid',
+            'icons',
+            'loadmore',
+            'panel',
+            'preview',
+            'progress',
+            'swiper'
+          ]
         },
         {
           id: 'feedback',
@@ -64,31 +76,36 @@ export default {
           name: '搜索相关',
           open: false,
           pages: ['searchbar']
+        },
+        {
+          id: 'issues',
+          name: 'issues 需求',
+          open: false,
+          pages: ['request', 'vuex', 'rate']
         }
       ]
-    }
+    };
   },
 
-  components: {
-  },
+  components: {},
 
   methods: {
     kindToggle(e) {
-      var id = e.currentTarget.id, list = this.list;
+      var id = e.currentTarget.id;
+      var list = this.list;
       for (var i = 0, len = list.length; i < len; ++i) {
-        if (list[i].id == id) {
-          list[i].open = !list[i].open
+        if (list[i].id === id) {
+          list[i].open = !list[i].open;
         } else {
-          list[i].open = false
+          list[i].open = false;
         }
       }
       this.list = list;
     }
   },
 
-  created() {
-  }
-}
+  created() { }
+};
 </script>
 
 <style scoped>

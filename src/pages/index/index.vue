@@ -6,7 +6,7 @@
     </div>
     <div class="page__bd page__bd_spacing">
       <div class="kind-list">
-        <div v-for="item in list" :key="index">
+        <div v-for="(item, index) in list" :key="index">
           <div class="kind-list__item">
             <div :id=item.id :class="{'kind-list__item-hd_show':item.open}" class="weui-flex,kind-list__item-hd" @click="kindToggle">
               <div class="weui-flex__item">{{item.name}}</div>
@@ -14,9 +14,9 @@
             </div>
             <div :class="{'kind-list__item-bd_show':item.open}" class="kind-list__item-bd">
               <div :class="{'weui-cells_show':item.open}" class="weui-cells">
-                <div v-for="item in item.pages" :key="index">
-                  <navigator class="weui-cell weui-cell_access" :url=" '/pages/'+item+'/'+item+ ''">
-                    <div class="weui-cell__bd">{{item}}</div>
+                <div v-for="(item1, index1) in item.pages" :key="index1">
+                  <navigator class="weui-cell weui-cell_access" :url=" '/pages/'+item1+'/'+item1+ ''">
+                    <div class="weui-cell__bd">{{item1}}</div>
                     <div class="weui-cell__ft weui-cell__ft_in-access"></div>
                   </navigator>
                 </div>

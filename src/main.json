@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/index/main",
     "pages/button/main",
+    "pages/index/main",
+
+
     "pages/list/main",
     "pages/input/main",
     "pages/slider/main",
     "pages/uploader/main",
-
     "pages/article/main",
     "pages/badge/main",
     "pages/flex/main",
@@ -27,6 +28,8 @@
     "pages/msg-success/main",
     "pages/picker/main",
     "pages/mulLinkagePicker/main",
+
+
     "pages/toast/main",
     "pages/navbar/main",
     "pages/tabbar/main",

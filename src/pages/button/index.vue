@@ -16,7 +16,11 @@
         <button class="weui-btn" type="warn" disabled="true">警告类操作 Disabled</button>
 
         <div class="button-sp-area">
-          <button class="weui-btn" type="primary" plain="true">按钮</button>
+          <button class="weui-btn" type="primary" open-type="getUserInfo" lang="zh_CN" @getuserinfo="getUserMsg" plain="true">按钮-getuserinfo</button>
+          <button class="weui-btn" type="primary" open-type="contact" @contact="getContact" send-message-title send-message-path send-message-img show-message-card="true">按钮-contact</button> <!--客服消息回调-->
+          <button class="weui-btn" type="primary" open-type="getPhoneNumber" @getphonenumber="getUserPhoneNumber" plain="true">按钮phone-number</button>
+          <button class="weui-btn" type="primary" @getuserinfo="getUserMsg" plain="true">按钮-getuserinfo</button>
+
           <button class="weui-btn" type="primary" disabled="true" plain="true">按钮</button>
 
           <button class="weui-btn" type="default" plain="true">按钮</button>
@@ -37,7 +41,15 @@
 export default {
 
   methods: {
-
+    getUserMsg(e) {
+      console.log(e);
+    },
+    getContact(e) {
+      console.log(e);
+    },
+    getUserPhoneNumber(e) {
+      console.log(e);
+    }
   }
 }
 

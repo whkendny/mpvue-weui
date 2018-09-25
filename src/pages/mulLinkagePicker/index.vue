@@ -1,12 +1,14 @@
 <template>
   <div class="page">
     <div :class="{'pickerMask':isShowMask}" @click="maskClick" catchtouchmove="true"></div>
-    <button type="default" @click="showPickerView">多级联动选择</button>
+    <button type="default" @click="showPickerView">多级联动选择 {{columuOne[pickerValue[0]]}}-{{columnTwo[pickerValue[1]]}}</button>
+
     <div class="weui-picker" :class="{'weui_picker_view_show':pickerShow}">
       <div class="weui-picker__hd">
         <div href="javascript:;" class="weui-picker__action" @click="pickerCancel">取消</div>
         <div href="javascript:;" class="weui-picker__action" @click="pickerConfirm">确定</div>
       </div>
+
       <picker-view indicator-style="height: 40px;" :value="pickerValue" class="weui_picker_view" @change="pickerChange">
         <picker-view-column>
           <div class="picker-item" v-for="(item,index) in columuOne" :key="index">{{item}}</div>
@@ -15,6 +17,7 @@
           <div class="picker-item" v-for="(item,index) in columnTwo" :key="index">{{item}}</div>
         </picker-view-column>
       </picker-view>
+
     </div>
   </div>
 </template>
@@ -27,6 +30,7 @@ export default {
       pickerShow: false,
       isShowMask: false,
       pickerValue: [0, 1],
+      pickerTempValue: [],
       mulLinkAgeArray: mulLinkAgeArray.value,
       columuOne: [],
       columnTwo: []
@@ -34,6 +38,7 @@ export default {
   },
   mounted() {
     this._initPicker();
+    this.pickerTempValue = this.pickerValue
   },
   methods: {
     pickerChange(e) {
@@ -54,15 +59,19 @@ export default {
         _this.pickerValue[1] = e.mp.detail.value[1];
       }
       console.log('选中的值为：' + _this.mulLinkAgeArray[value[0]].label + '-' + _this.mulLinkAgeArray[value[0]].children[value[1]].label);
-      console.log('pickerValue：' + this.pickerValue);
     },
     pickerConfirm() {
       console.log('选中的值为：' + this.mulLinkAgeArray[this.pickerValue[0]].label + '-' + this.mulLinkAgeArray[this.pickerValue[0]].children[this.pickerValue[1]].label);
-      console.log('pickerValue：' + this.pickerValue);
+      let that = this;
+      that.$set(that.pickerValue, 0, this.pickerValue[0])
+      that.$set(that.pickerValue, 1, this.pickerValue[1])
       this.isShowMask = false;
       this.pickerShow = false;
     },
     pickerCancel() {
+      let that = this;
+      that.$set(that.pickerValue, 0, that.pickerTempValue[0])
+      that.$set(that.pickerValue, 1, that.pickerTempValue[1])
       this.isShowMask = false;
       this.pickerShow = false;
     },

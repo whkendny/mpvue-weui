@@ -7,19 +7,19 @@
     <div class="page__bd">
       <div class="weui-btn-area">
         <picker @change="bindPickerChange" :value="index" :range="array">
-          <button type="default">单列选择器</button>
+          <button type="default">单列选择器 {{array[index]}}</button>
         </picker>
         <picker class="weui-btn" mode="multiSelector" @change="MultiPickerChange" :value="indexMulPicker" :range="multiArray" @columnchange="MultiPickerColumChange">
-          <button type="default">多列选择器</button>
+          <button type="default"  style="font-size: 14px;">多列选择器:{{indexMulPicker}}-sds== {{multiArray[0][indexMulPicker[0]]}}-{{multiArray[1][indexMulPicker[1]]}}-{{multiArray[2][indexMulPicker[2]]}}</button>
         </picker>
         <picker class="weui-btn" mode="time" :value="time" start="09:01" end="21:01" @change="bindTimeChange">
-          <button type="default">时间选择器</button>
+          <button type="default">时间选择器: {{time}}</button>
         </picker>
-        <picker class="weui-btn" mode="date" :value="date" start="2015-09-01" end="2017-09-01" @change="bindDateChange">
-          <button type="default">日期选择器</button>
+        <picker class="weui-btn" mode="date" :value="date" start="2015-09-01" end="2030-09-01" @change="bindDateChange">
+          <button type="default">日期选择器: {{date}}</button>
         </picker>
         <picker class="weui-btn" mode="region" :value="region" @change="CityChange">
-          <button type="default">城市选择器</button>
+          <button type="default">城市选择器:{{region}}</button>
         </picker>
         <button type="default" class="weui-btn" @click="multiLinkagePicker">多级联动</button>
       </div>
@@ -42,21 +42,30 @@ export default {
   },
   methods: {
     bindPickerChange(e) {
+      // console.log('bindPickerChange:--', e);
+      this.index = e.mp.detail.value
       console.log('选中的值为：' + this.array[e.mp.detail.value]);
     },
     MultiPickerChange(e) {
+      let that = this;
+      that.$set(that.indexMulPicker, 0, e.mp.detail.value[0])
+      that.$set(that.indexMulPicker, 1, e.mp.detail.value[1])
+      that.$set(that.indexMulPicker, 2, e.mp.detail.value[2])
       console.log('选中的值为：' + this.multiArray[0][e.mp.detail.value[0]] + '-' + this.multiArray[1][e.mp.detail.value[1]] + '-' + this.multiArray[2][e.mp.detail.value[2]])
     },
     MultiPickerColumChange(e) {
       console.log('列发生变化：' + '第' + parseInt(e.mp.detail.column + 1) + '列发生了变化，这列变化的值为:' + this.multiArray[e.mp.detail.column][e.mp.detail.value]);
     },
     bindTimeChange(e) {
+      this.time = e.mp.detail.value;
       console.log('选中的时间为：' + e.mp.detail.value);
     },
     bindDateChange(e) {
+      this.date = e.mp.detail.value;
       console.log('选中的日期为：' + e.mp.detail.value);
     },
     CityChange(e) {
+      this.region = e.mp.detail.value;
       console.log('选中的城市为：' + e.mp.detail.value);
     },
     multiLinkagePicker() {

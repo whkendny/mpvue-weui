@@ -4,7 +4,7 @@ import './css/app.css'
 import store from './store';
 import '../static/weui/weui.css'
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 App.mpType = 'app';
 Vue.prototype.$store = store;
 const app = new Vue({

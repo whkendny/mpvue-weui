@@ -5,9 +5,13 @@ export default {
     const logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
-
     console.log('app created and cache logs by setStorageSync')
   },
+
+  onLaunch () {
+    console.log('App_onLaunch_小程序初始化11:--');
+  },
+  // 捕捉 app error
   onError(msg) {
     console.log('小程序出错了:--', msg);
   }

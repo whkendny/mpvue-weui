@@ -4,7 +4,9 @@
       <div class="page__title">List</div>
       <div class="page__desc">列表</div>
     </div>
+
     <div class="page__bd">
+
       <div class="weui-cells__title">带说明的列表项</div>
       <div class="weui-cells weui-cells_after-title">
         <div class="weui-cell">
@@ -87,6 +89,7 @@ export default {
   },
   mounted() {
     this.icon = base64.icon20;
+    console.log('xxx:--', this.icon);
   }
 }
 </script>

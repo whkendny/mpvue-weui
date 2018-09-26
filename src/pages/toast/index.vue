@@ -8,6 +8,8 @@
       <div class="weui-btn-area">
         <button class="weui-btn" type="default" @click="openToast">成功提示</button>
         <button class="weui-btn" type="default" @click="openLoading">加载中提示</button>
+        <button class="weui-btn" type="default" @click="openError">错误提示</button>
+        <button class="weui-btn" type="default" @click="openWxLoading">show loading</button>
       </div>
     </div>
   </div>
@@ -25,6 +27,7 @@ export default {
       wx.showToast({
         title: '已完成',
         icon: 'success',
+        mask: true,
         duration: 3000
       });
     },
@@ -34,6 +37,33 @@ export default {
         icon: 'loading',
         duration: 3000
       });
+    },
+    openWxLoading() {
+      wx.showLoading({
+        title: 'wx.showLoading',
+        mask: true,
+        duration: 3000,
+        success: function(res) {
+          console.log(res);
+        }
+      })
+    },
+    openError() {
+      wx.showToast({
+        title: '打开出错',
+        mask: true,
+        image: '../../images/error.png',
+        duration: 3000,
+        success: function(res) {
+          console.log('success:--', res);
+        },
+        fail: function(res) {
+          console.log('fail:--', res);
+        },
+        complete: function(res) {
+          console.log('complete:--', res);
+        }
+      })
     }
   }
 }

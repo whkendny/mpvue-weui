@@ -40,15 +40,34 @@
           <div class="icon-box__desc">用于表示等待</div>
         </div>
       </div>
+      <div class="icon-box">
+        <icon type="cancel" size="93"></icon>
+        <div class="icon-box__ctn">
+          <div class="icon-box__title">取消</div>
+          <div class="icon-box__desc">用于表示取消</div>
+        </div>
+      </div>
+      <div class="icon-box">
+        <icon type="search" size="93"></icon>
+        <div class="icon-box__ctn">
+          <div class="icon-box__title">搜索</div>
+          <div class="icon-box__desc">用于表示查询搜索</div>
+        </div>
+      </div>
       <div class="icon_sp_area">
         <icon type="success" size="23"></icon>
         <icon type="success_no_circle" size="23"></icon>
         <icon type="circle" size="23"></icon>
         <icon type="warn" size="23" color="#F43530"></icon>
         <icon type="download" size="23"></icon>
+
+        <icon type="info" size="23"></icon>
         <icon type="info_circle" size="23"></icon>
         <icon type="cancel" size="23"></icon>
         <icon type="search" size="20"></icon>
+
+        <icon type="waiting" size="23"></icon>
+        <icon type="clear" size="20"></icon>
       </div>
     </div>
   </div>

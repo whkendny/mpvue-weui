@@ -82,6 +82,11 @@ npm run dev
 #### 搜索相关
 - [x] Searchbar
 
+#### 缺失相关的
+- scroll-view
+- movable-view
+- cover-view
+
 #### Issues 相关
 - [x] Request
 - [x] 页面通信（Vuex 实现）

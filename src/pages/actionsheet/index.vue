@@ -23,8 +23,15 @@ export default {
     open() {
       wx.showActionSheet({
         itemList: ['A', 'B', 'C'],
+        itemColor: 'red',
         success: function (res) {
           console.log(res.tapIndex)
+        },
+        fail: function (msg) {
+          console.log('fail:--', msg);
+        },
+        complete: function (msg) {
+          console.log('complete:--', msg);
         }
       });
     }

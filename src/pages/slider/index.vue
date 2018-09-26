@@ -10,7 +10,7 @@
       <slider show-value value="50" @change="sliderChange2" />
 
       <div class="weui-cells__title issues-content">动态修滑块最大值与最小值(默认区间为[100,500])：</div>
-      <slider show-value :value="sliderValue" :min='sliderMin' :max='sliderMax' @change="sliderChange3" />
+      <slider show-value :value="sliderValue" :min='sliderMin' :max='sliderMax' :step="12" @change="sliderChange3" />
       <div class="weui-cells__title">滑动修改滑块最小值(100-200)：</div>
       <slider show-value :value="udpateSliderMinValue" min=100 max=200 @change="sliderChange4" />
       <div class="weui-cells__title">滑动修改滑块最大值(900-1000)：</div>

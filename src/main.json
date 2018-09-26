@@ -1,9 +1,7 @@
 {
   "pages": [
-    "pages/button/main",
     "pages/index/main",
-
-
+    "pages/button/main",
     "pages/list/main",
     "pages/input/main",
     "pages/slider/main",
@@ -20,7 +18,6 @@
     "pages/preview/main",
     "pages/progress/main",
     "pages/swiper/main",
-
     "pages/actionsheet/main",
     "pages/dialog/main",
     "pages/msg/main",
@@ -28,15 +25,12 @@
     "pages/msg-success/main",
     "pages/picker/main",
     "pages/mulLinkagePicker/main",
-
-
     "pages/toast/main",
     "pages/navbar/main",
     "pages/tabbar/main",
-
     "pages/searchbar/main",
-
     "pages/request/main",
+
     "pages/vuex/main",
     "pages/vuexPage/main",
     "pages/rate/main",
@@ -45,10 +39,29 @@
     "pages/componentsTest/main"
 
   ],
+  "tabBar": {
+    "list": [{
+        "pagePath": "pages/index/main",
+        "text": "tabBar1",
+        "color": "#000",
+        "selectedColor": "red"
+      }, {
+        "pagePath": "pages/index/main",
+        "text": "tabBar2"
+      },{
+        "pagePath": "pages/index/main",
+        "text": "tabBar3"
+    }]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "weui for mpvue",
+    "navigationBarTitleText": "mpvue-ui",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": false
 }

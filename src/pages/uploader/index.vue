@@ -64,13 +64,21 @@ export default {
     chooseImage(e) {
       let _this = this;
       wx.chooseImage({
-        count: 1, // 默认9
+        count: 8, // 默认9
         sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
         sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
         success: function(res) {
-          console.log('成功上传：' + res.tempFilePaths);
+          console.log('成功上传：' + res.tempFilePaths, res);
           // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
           _this.files = _this.files.concat(res.tempFilePaths);
+          _this.files.forEach(function(v, k) {
+            wx.getImageInfo({
+              src: v,
+              success: function(res) {
+                console.log(`第${k}张上传图片信息:`, res);
+              }
+            })
+          })
         },
         fail: function() {
           console.log('fail');
@@ -81,15 +89,24 @@ export default {
       });
     },
     predivImage(e) {
-      console.log(e);
       wx.previewImage({
         current: e.currentTarget.id, // 当前显示图片的http链接
-        urls: this.files // 需要预览的图片http链接列表
+        urls: this.files, // 需要预览的图片http链接列表
+        success: function(res) {
+          console.log('预览成功:', res);
+        },
+        fail: function() {
+          console.log('预览失败!!!');
+        },
+        complete: function() {
+          console.log('预览完成!!!');
+        }
       });
     },
     deleteImg(e) {
       Array.prototype.indexOf = function(val) { // eslint-disable-line
         for (let i = 0; i < this.length; i++) {
+          console.log(this[i], val);
           if (this[i] === val) return i;
         }
         return -1;

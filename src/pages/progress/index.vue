@@ -13,6 +13,7 @@
           <icon type="cancel" size="22"></icon>
         </div>
       </div>
+
       <div class="weui-progress">
         <div class="weui-progress__bar">
           <progress percent="50" stroke-width="3" />
@@ -21,17 +22,19 @@
           <icon type="cancel" size="22"></icon>
         </div>
       </div>
+
       <div class="weui-progress">
         <div class="weui-progress__bar">
-          <progress percent="80" stroke-width="3" />
+          <progress percent="80" stroke-width="15" />
         </div>
         <div class="weui-progress__opr">
           <icon type="cancel" size="22"></icon>
         </div>
       </div>
+
       <div class="weui-progress">
         <div class="weui-progress__bar">
-          <progress :percent="progress" stroke-width="3" />
+          <progress :percent="progress" stroke-width="3" show-info="true" active="false" active-mode="forwards" />
         </div>
         <div class="weui-progress__opr">
           <icon type="cancel" size="22"></icon>
@@ -69,7 +72,7 @@ export default {
       _this.progress++
       setTimeout(function () {
         _this._next.call(_this); // eslint-disable-line
-      }, 20);
+      }, 200);
     }
   }
 }

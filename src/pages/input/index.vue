@@ -12,12 +12,13 @@
         <radio-group @change="radioChange">
           <label class="weui-cell weui-check__label" v-for="(item,index) in radioItems" :key="index">
             <radio class="weui-check" :value="item.value" :checked="item.checked" />
-            <div class="weui-cell__bd">{{item.name}}</div>
+            <div class="weui-cell__bd">{{item.name}} - {{item.value}} - {{item.checked}}</div>
             <div class="weui-cell__ft weui-cell__ft_in-radio" v-if="item.checked">
               <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
             </div>
           </label>
         </radio-group>
+
         <div class="weui-cell weui-cell_link">
           <div class="weui-cell__bd">添加更多</div>
         </div>
@@ -26,15 +27,16 @@
       <div class="weui-cells__title">复选列表项</div>
       <div class="weui-cells weui-cells_after-title">
         <checkbox-group @change="checkboxChange">
-      <label class="weui-cell weui-check__label" v-for="(item,index) in checkboxItems" :key="index">
-        <checkbox class="weui-check" :value="item.value" :checked="item.checked" />
-        <div class="weui-cell__hd weui-check__hd_in-checkbox">
-          <icon class="weui-icon-checkbox_circle" type="circle" size="23" v-if="!item.checked"></icon>
-          <icon class="weui-icon-checkbox_success" type="success" size="23" v-if="item.checked"></icon>
-        </div>
-        <div class="weui-cell__bd">{{item.name}}</div>
-      </label>
-    </checkbox-group>
+          <label class="weui-cell weui-check__label" v-for="(item,index) in checkboxItems" :key="index">
+            <checkbox class="weui-check" :value="item.value" :checked="item.checked" />
+            <div class="weui-cell__hd weui-check__hd_in-checkbox">
+              <icon class="weui-icon-checkbox_circle" type="circle" size="23" v-if="!item.checked"></icon>
+              <icon class="weui-icon-checkbox_success" type="success" size="23" v-if="item.checked"></icon>
+            </div>
+            <div class="weui-cell__bd">{{item.name}}</div>
+          </label>
+        </checkbox-group>
+
         <div class="weui-cell weui-cell_link">
           <div class="weui-cell__bd">添加更多</div>
         </div>
@@ -47,9 +49,10 @@
             <div class="weui-label">qq</div>
           </div>
           <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入qq" />
+            <input class="weui-input" type="number" placeholder="请输入qq" />
           </div>
         </div>
+
         <div class="weui-cell weui-cell_input weui-cell_vcode">
           <div class="weui-cell__hd">
             <div class="weui-label">手机号</div>
@@ -61,12 +64,13 @@
             <div class="weui-vcode-btn">获取验证码</div>
           </div>
         </div>
+
         <div class="weui-cell weui-cell_input">
           <div class="weui-cell__hd">
             <div class="weui-label">日期</div>
           </div>
           <div class="weui-cell__bd">
-            <picker mode="date" value="date" start="2015-09-01" end="2017-09-01" @change="bindDateChange">
+            <picker mode="date" value="date" start="2015-09-01" end="2030-09-01" @change="bindDateChange">
               <div class="weui-input">{{date}}</div>
             </picker>
           </div>
@@ -76,11 +80,12 @@
             <div class="weui-label">时间</div>
           </div>
           <div class="weui-cell__bd">
-            <picker mode="time" value="time" start="09:01" end="21:01" @change="bindTimeChange">
+            <picker mode="time" value="time" start="09:01" end="24:00" @change="bindTimeChange">
               <div class="weui-input">{{time}}</div>
             </picker>
           </div>
         </div>
+
         <div class="weui-cell weui-cell_input weui-cell_vcode">
           <div class="weui-cell__hd">
             <div class="weui-label">验证码</div>
@@ -125,7 +130,7 @@
       <div class="weui-cells weui-cells_after-title">
         <div class="weui-cell weui-cell_input">
           <div class="weui-cell__bd">
-            <input class="weui-input" placeholder="请输入文本" />
+            <input class="weui-input" type="text" confirm-type="next" placeholder="请输入文本" />
           </div>
         </div>
       </div>

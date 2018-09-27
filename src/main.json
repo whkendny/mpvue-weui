@@ -1,5 +1,7 @@
 {
   "pages": [
+    "pages/richText/main",
+    
     "pages/index/main",
     "pages/button/main",
     "pages/list/main",
@@ -34,6 +36,7 @@
     "pages/vuex/main",
     "pages/vuexPage/main",
     "pages/rate/main",
+    "pages/webView/main",
 
     "pages/test/main",
     "pages/componentsTest/main"

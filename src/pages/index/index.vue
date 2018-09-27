@@ -26,7 +26,15 @@
         </div>
       </div>
     </div>
+    <!--拉取用户信息-->
+    <open-data type="userAvatarUrl"></open-data>
+    <open-data type="userGender" lang="zh_CN"></open-data>
+
+
+    <!-- 关注公众号组件 -->
+    <!-- <official-account></official-account> -->
   </div>
+
 </template>
 
 <script>
@@ -178,5 +186,12 @@ export default {
 
 .kind-list__item-bd_show {
   height: auto;
+}
+.catch-watch{
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  font-size: 16px;
+  color: #000;
 }
 </style>

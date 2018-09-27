@@ -11,11 +11,13 @@
         <button class="weui-btn mini-btn" type="primary" size="mini" @click="getNewsData('junshi')">军事</button>
         <button class="weui-btn mini-btn" type="primary" size="mini" @click="getNewsData('tiyu')">体育</button>
         <button class="weui-btn mini-btn" type="primary" size="mini" @click="getNewsData('yule')">娱乐</button>
+
+          <button class="weui-btn mini-btn" type="primary" size="mini" @click="getWechatData('weixin')">微信精选</button>
       </div>
       <div class='content-list'>
         <block v-for="(item,index) in contentNewsList" :key="index">
           <div class='list-item'>
-            <div class='list-item-content'>
+            <div @click="navigatorToUrl(item)" class='list-item-content'>
               <div class='list-item-left'>
                 <image :src="item.thumbnail_pic_s"></image>
               </div>
@@ -53,9 +55,35 @@ export default {
         type: type,
         key: 'fc35d7872c25744ab4669c7d9dbcf15e'
       }).then(res => {
+        console.log(res);
         wx.hideLoading()
         this.contentNewsList = res.data.result.data;
       })
+    },
+
+    getWechatData: function () {
+      wx.showLoading({
+        title: '加载中',
+        mask: true
+      })
+
+      let fly = new Fly();
+      fly.get('https://v.juhe.cn/weixin/query', {
+        key: 'f16af393a63364b729fd81ed9fdd4b7d'
+      }).then(res => {
+        console.log(res);
+        wx.hideLoading()
+        this.contentNewsList = res.data.result.list;
+      })
+    },
+
+    navigatorToUrl(itemData) {
+      if (itemData.url) {
+        let url = encodeURIComponent(itemData.url)
+        wx.navigateTo({
+          url: '/pages/webView/main?url='+url
+        })
+      }
     }
   }
 }

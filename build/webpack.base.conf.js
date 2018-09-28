@@ -3,12 +3,12 @@ var fs = require('fs')
 var utils = require('./utils')
 var config = require('../config')
 var vueLoaderConfig = require('./vue-loader.conf')
-var MpvuePlugin = require('webpack-mpvue-asset-plugin')
+var MpvuePlugin = require('webpack-mpvue-asset-plugin') //mpVue资源路径解析插件
 var glob = require('glob')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
-var configFilesArray = []
 var relative = require('relative')
 
+// 获取路径
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -20,22 +20,14 @@ function getEntry (rootSrc) {
     var key = relative(rootSrc, file).replace('.js', '');
     map[key] = file;
   })
-  glob.sync(rootSrc + '/pages/**/main.json')
-  .forEach(file => {
-    configFilesArray.push({
-      from: file,
-      to: relative(rootSrc, file)
-    })
-   })
    return map;
 }
 
+// 小程序的 App 入口
 const appEntry = { app: resolve('./src/main.js') }
-configFilesArray.push({
-    from: resolve('./src/main.json'),
-    to: 'app.json'
-})
+// 小程序的 Page 入口
 const pagesEntry = getEntry(resolve('./src'), 'pages/**/main.js')
+// 构建小程序入口
 const entry = Object.assign({}, appEntry, pagesEntry)
 
 module.exports = {
@@ -43,26 +35,30 @@ module.exports = {
   // 可以将 entry 写成 {'toPath': 'fromPath'} 的形式，
   // toPath 为相对于 dist 的路径, 例：index/demo，则生成的文件地址为 dist/index/demo.js
   entry,
+  // 专门为微信小程序写的`target`, 具体的参考: http://mpvue.com/build/mpvue-webpack-target/
   target: require('mpvue-webpack-target'),
+  // 输出的文件
   output: {
-    path: config.build.assetsRoot,
+    path: config.build.assetsRoot, // `../dist/`
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    publicPath: process.env.NODE_ENV === 'production' //对外资源的公开目录
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
+    // 通过`alias`来覆盖原`vue.runtime`为我们改写过后的 `mpvue.runtime`
     alias: {
-      'vue': 'mpvue',
-      '@': resolve('src')
+      'vue': 'mpvue',      // 这样就可以在项目中直接使用 `import Vue from vue `
+      '@': resolve('src')  // 创建 `import` 或 `require`的别名. 来确保模块引用更简单;
     },
     symlinks: false,
-    aliasFields: ['mpvue', 'weapp', 'browser'],
-    mainFields: ['browser', 'module', 'main']
+    aliasFields: ['mpvue', 'weapp', 'browser'], // 指定解析规则
+    mainFields: ['browser', 'module', 'main']  //
   },
   module: {
     rules: [
+      // 对`*.js / *.vue`文件进行基本的语法规则检查
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',
@@ -72,11 +68,13 @@ module.exports = {
           formatter: require('eslint-friendly-formatter')
         }
       },
+      // 把 /\.vue$/ 后缀文件修改 vue-loader 为 mpvue-loader
       {
         test: /\.vue$/,
         loader: 'mpvue-loader',
         options: vueLoaderConfig
       },
+      // 更新 /\.js$/ rule 的 loader,  给所有 js 后缀文件增加 mpvue-loader，并且需要加 options
       {
         test: /\.js$/,
         include: [resolve('src'), resolve('test')],
@@ -118,7 +116,12 @@ module.exports = {
   },
   plugins: [
     new MpvuePlugin(),
-    new CopyWebpackPlugin(configFilesArray),
+    new CopyWebpackPlugin([{
+      from: '**/*.json',
+      to: ''
+    }], {
+      context: 'src/'
+    }),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),

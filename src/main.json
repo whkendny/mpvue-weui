@@ -1,7 +1,6 @@
 {
   "pages": [
-    "pages/richText/main",
-    
+
     "pages/index/main",
     "pages/button/main",
     "pages/list/main",
@@ -36,10 +35,13 @@
     "pages/vuex/main",
     "pages/vuexPage/main",
     "pages/rate/main",
-    "pages/webView/main",
 
     "pages/test/main",
-    "pages/componentsTest/main"
+    "pages/componentsTest/main",
+    "pages/richText/main",
+
+    "pages/webView/main",
+    "pages/audio/main"
 
   ],
   "tabBar": {
@@ -59,12 +61,17 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "mpvue-ui",
-    "navigationBarTextStyle": "black"
+    "navigationBarTitleText": "mpvue-ui-demo",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "backgroundColor": "red",
+    "backgroundTextStyle": "light"
   },
   "networkTimeout": {
     "request": 10000,
     "downloadFile": 10000
   },
+  "requiredBackgroundModes": ["audio"],
+  "resizable": true,
   "debug": false
 }

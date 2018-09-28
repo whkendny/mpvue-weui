@@ -8,8 +8,18 @@ export default {
     console.log('app created and cache logs by setStorageSync')
   },
 
+  globalData: "I am the globalData",
   onLaunch () {
-    console.log('App_onLaunch_小程序初始化11:--');
+    console.log('App_onLaunch_小程序初始化:--');
+  },
+  onShow() {
+    console.log('App_onShow: 监听小程序显示');
+  },
+  onHide() {
+    console.log('App_onHide: 小程序隐藏触发');
+  },
+  onPageNotFound() {
+    console.log('App_onPageNotFound: 监听页面不存在时触发');
   },
   // 捕捉 app error
   onError(msg) {

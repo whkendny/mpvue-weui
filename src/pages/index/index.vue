@@ -27,8 +27,8 @@
       </div>
     </div>
     <!--拉取用户信息-->
-    <open-data type="userAvatarUrl"></open-data>
-    <open-data type="userGender" lang="zh_CN"></open-data>
+    <!-- <open-data type="userAvatarUrl"></open-data>
+    <open-data type="userGender" lang="zh_CN"></open-data> -->
 
 
     <!-- 关注公众号组件 -->
@@ -96,7 +96,12 @@ export default {
   },
 
   components: {},
-
+  onReachBottom() {
+    console.log('onReachBottom:--已经下拉触底啦!');
+  },
+  onPullDownRefresh() {
+    console.log('onPullDownRefresh:--下拉刷新触发!');
+  },
   methods: {
     kindToggle(e) {
       var id = e.currentTarget.id;
@@ -111,7 +116,6 @@ export default {
       this.list = list;
     }
   },
-
   created() { }
 };
 </script>

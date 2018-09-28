@@ -87,6 +87,11 @@ npm run dev
 - movable-view
 - cover-view
 
+#### 新增相关
+- rich-text
+- audio
+- webView
+
 #### Issues 相关
 - [x] Request
 - [x] 页面通信（Vuex 实现）

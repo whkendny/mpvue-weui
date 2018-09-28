@@ -7,7 +7,5 @@ import '../static/weui/weui.css'
 Vue.config.productionTip = true;
 App.mpType = 'app';
 Vue.prototype.$store = store;
-const app = new Vue({
-  App
-})
+const app = new Vue(App)
 app.$mount();

@@ -3,5 +3,6 @@
   "navigationBarBackgroundColor": "#fff",
   "navigationBarTitleText": "Mpvue_UI_Index",
   "navigationBarTextStyle": "black",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "disableScroll": false
 }
